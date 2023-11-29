@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Weather App</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <nav>
+      <h1>Weather Report</h1>
+    </nav>
+    <div class="container">
+      <div class="weather-input">
+        <h3>Enter a City</h3>
+        <input
+          class="city-input"
+          type="text"
+          placeholder="E.g., Cluj-Napoca, London, Rome"
+        />
+        <button class="search-btn">Search</button>
+        <div class="separator"></div>
+        <button class="location-btn">Use Current Location</button>
+      </div>
+      <div class="weather-data">
+        <div id="currentWeather"></div>
+        <div class="days-forecast">
+          <h2>5-Day Forecast</h2>
+          <ul class="weather-cards" id="weatherCards"></ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

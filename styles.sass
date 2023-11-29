@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap')
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  font-family: 'Open Sans', sans-serif
+  color: #fff
+
+body
+  background: #3B0CB5
+
+nav
+  background: #481ABC
+  padding: 1%
+  display: flex
+  justify-content: center
+
+h1
+  font-size: 2rem
+
+.container
+  display: flex
+  gap: 35px
+  padding: 30px
+
+.weather-input
+  width: 550px
+
+  input
+    height: 46px
+    width: 100%
+    outline: none
+    font-size: 1.07rem
+    color: #471ABC
+    padding: 0 17px
+    margin: 10px 0 20px 0
+    border-radius: 4px
+    border: 1px solid #ccc
+
+    &:focus
+      padding: 0 16px
+      border: 2px solid #FFA500
+
+  .separator
+    height: 1px
+    width: 100%
+    margin: 25px 0
+    background: #BBBBBB
+    display: flex
+    align-items: center
+    justify-content: center
+
+    &::before
+      content: "or"
+      font-size: 1.18rem
+      padding: 0 15px
+      margin-top: -4px
+      background: #3B0DB5
+
+  button
+    width: 100%
+    padding: 10px 0
+    cursor: pointer
+    outline: none
+    border: none
+    border-radius: 4px
+    font-size: 1rem
+    background: #ffc966
+    color: #471ABC
+    transition: 0.2s ease
+
+    &:hover
+      background: #ffa500
+      
+    &.location-btn
+      background: #0092E5
+      color: #fff
+
+      &:hover
+        background: #006299
+
+.weather-data
+  width: 100%
+
+  .current-weather
+    background: #481ABC
+    border-radius: 5px
+    padding: 20px 70px 20px 20px
+    display: flex
+    justify-content: space-between
+
+    h2
+      font-weight: 700
+      font-size: 1.7rem
+
+    .icon
+      text-align: center
+
+      img
+        max-width: 120px
+        margin-top: -15px
+
+      h6
+        margin-top: -10px
+        text-transform: capitalize
+
+  h6
+    margin-top: 12px
+    font-size: 1rem
+    font-weight: 500
+
+  .days-forecast
+    h2
+      margin: 20px 0
+      font-size: 1.5rem
+
+    .weather-cards
+      display: flex
+      gap: 20px
+
+      .card
+        padding: 18px 16px
+        list-style: none
+        width: calc(100% / 5)
+        background: #0092E6
+        border-radius: 5px
+
+        h3
+          font-size: 1.3rem
+          font-weight: 600
+
+        img
+          max-width: 70px
+          margin: 5px 0 -12px 0
+
+@media (max-width: 768px)
+  h1
+    font-size: 1.45rem
+    padding: 16px 0
+
+  .container
+    flex-wrap: wrap
+    padding: 1rem
+    gap: 0
+
+  .weather-input
+    width: 100%
+
+  .weather-data
+    h2
+    font-size: 1.35rem
+
+  .weather-cards
+    flex-direction: column
+
+  .weather-data .days-forecast .weather-cards .card
+    width: 100%
