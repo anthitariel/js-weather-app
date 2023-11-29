@@ -18,35 +18,35 @@ nav
   justify-content: center
 
 h1
-  font-size: 2rem
+  font-size: 2.5rem
 
 .container
   display: flex
-  gap: 35px
-  padding: 30px
+  gap: 3rem
+  padding: 1.8rem
 
 .weather-input
-  width: 550px
+  width: 30%
 
   input
-    height: 46px
+    height: 2.9rem
     width: 100%
     outline: none
     font-size: 1.07rem
     color: #471ABC
-    padding: 0 17px
-    margin: 10px 0 20px 0
-    border-radius: 4px
-    border: 1px solid #ccc
+    padding: 0 1rem
+    margin: 0.6rem 0 1.25rem 0
+    border-radius: 0.3rem
+    border: 0.06rem solid #ccc
 
     &:focus
-      padding: 0 16px
-      border: 2px solid #FFA500
+      padding: 0 1rem
+      border: 0.125rem solid #FFA500
 
   .separator
-    height: 1px
+    height: 0.05rem
     width: 100%
-    margin: 25px 0
+    margin: 1.8rem 0
     background: #BBBBBB
     display: flex
     align-items: center
@@ -54,18 +54,17 @@ h1
 
     &::before
       content: "or"
-      font-size: 1.18rem
-      padding: 0 15px
-      margin-top: -4px
+      font-size: 1.1rem
+      padding: 1rem 1rem
       background: #3B0DB5
 
   button
     width: 100%
-    padding: 10px 0
+    padding: 0.8rem 0
     cursor: pointer
     outline: none
     border: none
-    border-radius: 4px
+    border-radius: 0.25rem
     font-size: 1rem
     background: #ffc966
     color: #471ABC
@@ -83,66 +82,61 @@ h1
 
 .weather-data
   width: 100%
+  background: #481ABC
+  padding: 2rem
+  border-radius: 0.5rem
 
   .current-weather
-    background: #481ABC
-    border-radius: 5px
-    padding: 20px
-    display: flex
-    justify-content: space-between
-
+    margin-bottom: 4rem
     h2
       font-weight: 700
-      font-size: 1.7rem
+      font-size: 2rem
 
     .icon
       text-align: center
 
       img
-        max-width: 120px
-        margin-top: -15px
-
+        max-width: 6rem
       h6
-        margin-top: -10px
         text-transform: capitalize
 
   h6
-    margin-top: 12px
+    margin-bottom: 0
+    margin-top: 1rem
     font-size: 1rem
     font-weight: 500
 
   .days-forecast
     h2
-      margin: 20px 0
-      font-size: 1.5rem
+      margin-bottom: 1.25rem
+      font-size: 2rem
 
     .weather-cards
-      display: flex
-      gap: 20px
+      display: grid
+      grid-template-columns: repeat(5, 1fr)
+      gap: 2%
 
       .card
-        padding: 18px 16px
-        list-style: none
-        width: calc(100% / 5)
+        padding: 2rem
         background: #0092E6
-        border-radius: 5px
+        border-radius: 0.5rem
 
         h3
           font-size: 1.3rem
           font-weight: 600
+          margin-bottom: 1rem
 
         img
-          max-width: 70px
-          margin: 5px 0 -12px 0
+          max-width: 4rem
+          margin: 0.3rem 0 -0.75rem 0
 
 @media (max-width: 768px)
   h1
-    font-size: 1.4rem
-    padding: 16px 0
+    font-size: 1.7rem
+    padding: 1rem 0
 
-  h2
-    font-size: 1.1rem
-    padding: 16px 0
+  .weather-data .days-forecast h2
+    font-size: 1.5rem
 
   .container
     flex-wrap: wrap
@@ -152,15 +146,36 @@ h1
   .weather-input
     width: 100%
 
-  .weather-cards
-    flex-direction: column
+  .weather-data
+    margin-top: 2rem
+    padding: 0
+    background: #3B0CB5
+  
+  .current-weather
+    display: grid
+    align-items: center
+    text-align: center
+
+  .weather-data .current-weather
+    margin-bottom: 2rem
+
+  .weather-data .days-forecast .weather-cards
+    grid-template-columns: repeat(2, 1fr)
 
   .weather-data .days-forecast .weather-cards .card
-    width: 100%
+    padding: 2rem 1rem
 
-  .weather-data
-    .current-weather
-      padding-left: 20px
-      margin-top: 20px
-      h2
-        font-size: 1.3rem
+  .weather-data .current-weather h2
+    font-size: 1.5rem
+  
+  .days-forecast
+    display: grid
+    align-items: center
+    text-align: center
+
+  .weather-data .days-forecast .weather-cards .card h3
+    font-size: 1rem
+    margin: 0
+
+  .weather-data .days-forecast .weather-cards .card h6
+    font-size: 0.9rem

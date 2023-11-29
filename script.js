@@ -4,21 +4,17 @@ const locationButton = document.querySelector(".location-btn");
 const currentWeatherDiv = document.getElementById("currentWeather");
 const weatherCardsDiv = document.getElementById("weatherCards");
 
-// initial cards
-
 const initialCards = Array.from({
   length: 5
 }, (_, index) => `
-    <li class="card">
+    <div class="card">
         <h3>( ______ )</h3>
-        <h6>Temp: __C</h6>
+        <h6>Temp: __C/F</h6>
         <h6>Wind: __ M/S</h6>
         <h6>Humidity: __%</h6>
-    </li>
+    </div>
 `).join("");
 weatherCardsDiv.innerHTML = initialCards;
-
-// fetching
 
 const API_KEY = "714137a7764187221c63bfd37cef54b8";
 
@@ -26,29 +22,31 @@ const createWeatherCard = (cityName, weatherItem, index) => {
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   const date = new Date(weatherItem.dt_txt);
   const dayOfWeek = daysOfWeek[date.getDay()];
+  const celsiusTemp = (weatherItem.main.temp - 273.15).toFixed(0);
+  const fahrenheitTemp = ((celsiusTemp * 9) / 5 + 32).toFixed(0);
 
   if (index === 0) {
     return `
       <div class="current-weather">
+        <h2>${cityName}, ${weatherItem.dt_txt.split(" ")[0]}</h2>
         <div class="details">
-          <h2>${cityName}, ${weatherItem.dt_txt.split(" ")[0]}</h2>
-          <h6>Temperature: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</h6>
-          <h6>Wind: ${weatherItem.wind.speed} M/S</h6>
-          <h6>Humidity: ${weatherItem.main.humidity}%</h6>
-        </div>
-        <div class="icon">
           <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
         </div>
+        <div class="details">
+        <h6>Temperature: ${celsiusTemp}°C / ${fahrenheitTemp}°F</h6>
+        <h6>Wind: ${weatherItem.wind.speed} M/S</h6>
+        <h6>Humidity: ${weatherItem.main.humidity}%</h6>
+      </div>
       </div>
     `;
   } else {
-    return `<li class="card">
+    return `<div class="card">
       <h3>${dayOfWeek} ${weatherItem.dt_txt.split(" ")[0]}</h3>
       <img src="https://openweathermap.org/img/wn/${weatherItem.weather[0].icon}@4x.png" alt="weather-icon">
-      <h6>Temp: ${(weatherItem.main.temp - 273.15).toFixed(2)}°C</h6>
+      <h6>Temp: ${celsiusTemp}°C / ${fahrenheitTemp}°F</h6>
       <h6>Wind: ${weatherItem.wind.speed} M/S</h6>
       <h6>Humidity: ${weatherItem.main.humidity}%</h6>
-    </li>`;
+    </div>`;
   }
 };
 
@@ -72,7 +70,6 @@ const getWeatherDetails = (cityName, latitude, longitude) => {
       weatherCardsDiv.innerHTML = "";
 
       fiveDaysForecast.forEach((weatherItem, index) => {
-        console.log(weatherItem)
         const html = createWeatherCard(cityName, weatherItem, index);
         if (index === 0) {
           currentWeatherDiv.insertAdjacentHTML("beforeend", html);
@@ -145,4 +142,5 @@ locationButton.addEventListener("click", getUserCoordinates);
 searchButton.addEventListener("click", getCityCoordinates);
 cityInput.addEventListener("keyup", (e) =>
   e.key === "Enter" && getCityCoordinates()
-);
+); 
+
